@@ -53,16 +53,14 @@ public class StudentRestController {
 
     @GetMapping("/edit/{id}")
     public String editStudent(@PathVariable Long id, Model model) {
-        // Récupérez les détails de l'étudiant avec l'ID spécifié
         Student student = studentService.getStudentById(id);
 
         if (student != null) {
             model.addAttribute("student", student);
-            return "editStudent"; // Redirigez vers la page d'édition de l'étudiant
+            return "editStudent";
         } else {
-            // Gérez le cas où l'étudiant n'a pas été trouvé, par exemple, en affichant un message d'erreur
             model.addAttribute("error", "Étudiant non trouvé avec l'ID spécifié.");
-            return "list"; // Redirigez vers la liste des étudiants ou une autre page en cas d'erreur
+            return "list";
         }
     }
 
