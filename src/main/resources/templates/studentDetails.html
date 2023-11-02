@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Détails de l'étudiant</title>
+</head>
+<body>
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <a class="navbar-brand" href="#">NAVBAR</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav">
+            <li class="nav-item active">
+                <a class="nav-link" th:href="@{/students/home}">Accueil <span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" th:href="@{/students/list}">Liste des Étudiants</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" th:href="@{/students/form}">Ajouter un Étudiant</a>
+            </li>
+        </ul>
+    </div>
+</nav>
+<h1>Détails de l'étudiant</h1>
+<p>Prénom : <span th:text="${student.firstName}"></span></p>
+<p>Nom : <span th:text="${student.lastName}"></span></p>
+<p>Âge : <span th:text="${student.age}"></span></p>
+<form action="/students/{id}" method="post">
+    <input type="hidden" name="_method" value="DELETE">
+    <button type="submit">Supprimer</button>
+</form>
+<a th:href="@{/students/{id}/edit(id=${student.id})}">Modifier</a>
+<footer>
+    <!-- Footer -->
+</footer>
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>
